@@ -145,6 +145,7 @@ namespace MeasurementApp.ViewModels
 
         private readonly ISort<MyKeyValue<int, string>>[] availableSortingAlgorithms = {
                 new StandardSort<MyKeyValue<int, string>>(),
+                new QuickSort<MyKeyValue<int, string>>(),
                 new QuickSortParallell<MyKeyValue<int, string>>(),
                 new SelectionSort<MyKeyValue<int, string>>(),
                 new SelectionSortParallell<MyKeyValue<int, string>>(),
