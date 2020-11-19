@@ -49,6 +49,7 @@
     <Compile Include="SelectionSortParallell.cs" />
     <Compile Include="StandardSort.cs" />
     <Compile Include="TopNSelectionSort.cs" />
+    <Compile Include="TopNSelectionSortParallell.cs" />
     <Compile Include="TopNStandardSort.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
