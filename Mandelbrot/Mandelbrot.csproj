@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MandelbrotParallell.cs" />
+    <Compile Include="MandelbrotParallellPartitioner.cs" />
     <Compile Include="MandelbrotSingleThread.cs" />
     <Compile Include="MandelbrotBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
