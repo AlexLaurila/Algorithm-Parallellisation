@@ -40,9 +40,9 @@
                 <Image Height="250" Width="250" Source="{Binding MandelbrotImage}"/>
             </StackPanel>
             <Button Command="{Binding RunCommand}" IsEnabled="{Binding RunIsEnabled}" Content="Start" Width="75"/>
-            <ScrollViewer Height="200" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" IsEnabled="True">
-                <TextBox x:Name="ResultLog" Text="{Binding ResultLog}" IsReadOnly="True" UndoLimit="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" MinHeight="1000"/>
+            <ScrollViewer Height="300" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" IsEnabled="True">
+	            <TextBox x:Name="ResultLog" Text="{Binding ResultLog}" IsReadOnly="True" UndoLimit="0" MinHeight="300" Width="600" VerticalAlignment="Top" Height="300"/>
             </ScrollViewer>
-        </StackPanel>
+		</StackPanel>
     </StackPanel>
 </UserControl>
