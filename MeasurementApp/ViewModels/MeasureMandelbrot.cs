@@ -120,7 +120,7 @@ namespace MeasurementApp.ViewModels
                         // Render the result on the UI.
                         ResultLog += "Algorithm " + m.Name + ": " +
                             t.Result.Item1.ToString() + " wall clock sec. " +
-                            t.Result.Item2.ToString() + " processor user time sec." +
+                            t.Result.Item2.ToString() + " processor user time sec.\n" +
                             Environment.NewLine;
 
                         // Ugly conversion to image.
