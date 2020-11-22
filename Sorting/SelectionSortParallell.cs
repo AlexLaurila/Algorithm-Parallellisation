@@ -26,7 +26,7 @@ namespace Sorting
                 //Tömmer concurrentbagen
                 while (!localMinList.IsEmpty)
                 {
-                    localMinList.TryTake(out int derp);
+                    localMinList.TryTake(out int emptier);
                 }
                 int min = i;
 
