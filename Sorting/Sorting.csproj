@@ -49,6 +49,8 @@
     <Compile Include="QuickSortParallell.cs" />
     <Compile Include="SelectionSortParallell.cs" />
     <Compile Include="StandardSort.cs" />
+    <Compile Include="TopNInsertionSort.cs" />
+    <Compile Include="TopNInsertionSortParallel.cs" />
     <Compile Include="TopNSelectionSort.cs" />
     <Compile Include="TopNSelectionSortParallell.cs" />
     <Compile Include="TopNStandardSort.cs" />
