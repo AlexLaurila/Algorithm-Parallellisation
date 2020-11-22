@@ -25,23 +25,16 @@ namespace Sorting
             {
                 //Tömmer concurrentbagen
                 while (!localMinList.IsEmpty)
-                {
                     localMinList.TryTake(out int emptier);
-                }
                 int min = i;
 
                 Parallel.ForEach(Partitioner.Create(i + 1, n), (range) =>
                 {
-                    localMinList.Add(range.Item1);
+                    int lowestIndex = range.Item1;
                     for (int j = range.Item1 + 1; j < range.Item2; j++)
-                    {
-                        if (comparer.Compare(inputOutput[j], inputOutput[range.Item1]) < 0)
-                        {
-                            T tmp = inputOutput[j];
-                            inputOutput[j] = inputOutput[range.Item1];
-                            inputOutput[range.Item1] = tmp;
-                        }
-                    }
+                        if (comparer.Compare(inputOutput[j], inputOutput[lowestIndex]) < 0)
+                            lowestIndex = j;
+                    localMinList.Add(lowestIndex);
                 });
 
                 int[] minList = localMinList.ToArray();
