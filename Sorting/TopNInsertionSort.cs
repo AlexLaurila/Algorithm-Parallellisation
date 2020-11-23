@@ -24,23 +24,21 @@ namespace Sorting
         public T[] InsertionSort(T[] inputOutput, int n, IComparer<T> comparer)
         {
             int k = inputOutput.Length;
-            T[] list = new T[k];
 
-            for (int i = 1; i < n; i++)
+            for (int i = 1; i < k; i++)
             {
-                T key = inputOutput[i];
-                int j = i - 1;
-
-                while (j >= 0 && comparer.Compare(inputOutput[j], key) > 0)
+                for (int j = i; j > 0; j--)
                 {
-                    inputOutput[j + 1] = inputOutput[j];
-                    j = j - 1;
+                    if (comparer.Compare(inputOutput[j], inputOutput[j - 1]) < 0)
+                    {
+                        T tmp = inputOutput[j - 1];
+                        inputOutput[j - 1] = inputOutput[j];
+                        inputOutput[j] = tmp;
+                    }
                 }
-                inputOutput[j + 1] = key;
-                list.Append<T>(key);
             }
 
-            return list.Take<T>(n).ToArray();
+            return inputOutput.Take<T>(n).ToArray();
         }
     }
 }
