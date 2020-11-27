@@ -2,30 +2,31 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sorting
 {
-    public class QuickSortParallell<T> : ISort<T>
+    public class TopNQuickSort<T> : ITopNSort<T>
     {
-        public string Name { get { return "QuickSortParallell"; } }
+        public string Name { get { return "TopNQuickSort"; } }
 
-        public void Sort(T[] inputOutput)
+        public T[] TopNSort(T[] inputOutput, int n)
         {
-            Sort(inputOutput, Comparer<T>.Default);
+            return TopNSort(inputOutput, n, Comparer<T>.Default);
         }
 
-        public void Sort(T[] inputOutput, IComparer<T> comparer)
+        public T[] TopNSort(T[] inputOutput, int n, IComparer<T> comparer)
         {
             int left = 0;
             int right = inputOutput.Length - 1;
-            QuickSort(inputOutput, comparer, left, right);
-
+            TopNQuickSorter(inputOutput, comparer, left, right, n);
+            return inputOutput.Take<T>(n).ToArray();
         }
 
-        private static void QuickSort<T>(T[] inputOutput, IComparer<T> comparer, int left, int right)
+        private static void TopNQuickSorter<T>(T[] inputOutput, IComparer<T> comparer, int left, int right, int n)
         {
             var depth = right - left;
             if (left >= right)
@@ -45,15 +46,22 @@ namespace Sorting
 
             if (depth < 2048)
             {
-                QuickSort(inputOutput, comparer, left, last - 1);
-                QuickSort(inputOutput, comparer, last + 1, right);
+                TopNQuickSorter(inputOutput, comparer, left, last - 1, n);
+
+                if(last < n)
+                    TopNQuickSorter(inputOutput, comparer, last + 1, right, n);
             }
             else
             {
-                Parallel.Invoke(
-                    () => QuickSort(inputOutput, comparer, left, last - 1),
-                    () => QuickSort(inputOutput, comparer, last + 1, right)
-                );
+                if (last < n)
+                {
+                    Parallel.Invoke(
+                        () => TopNQuickSorter(inputOutput, comparer, left, last - 1, n),
+                        () => TopNQuickSorter(inputOutput, comparer, last + 1, right, n)
+                    );
+                }
+                else
+                    TopNQuickSorter(inputOutput, comparer, left, last - 1, n);
             }
         }
 
