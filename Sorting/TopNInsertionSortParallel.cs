@@ -67,7 +67,7 @@ namespace Sorting
                     }
                 }
             }
-            //Returnera sorterade array
+            //Returnera sorterad array
             return newList.Take<T>(n).ToArray();
         }
     }
