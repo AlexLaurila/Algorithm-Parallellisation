@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Sorting
 {
-    public class TopNQuickSort<T> : ITopNSort<T>
+    public class TopNQuickSortParallel<T> : ITopNSort<T>
     {
-        public string Name { get { return "TopNQuickSort"; } }
+        public string Name { get { return "TopNQuickSortParallel"; } }
 
         public T[] TopNSort(T[] inputOutput, int n)
         {

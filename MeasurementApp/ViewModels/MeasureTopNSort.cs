@@ -158,10 +158,10 @@ namespace MeasurementApp.ViewModels
 
         private readonly ITopNSort<MyKeyValue<int, string>>[] availableTopNSortAlgorithms = {
                 new TopNStandardSort<MyKeyValue<int, string>>(),
-                new TopNQuickSort<MyKeyValue<int, string>>(),
-                new TopNSelectionSort<MyKeyValue<int, string>>(),
-                new TopNSelectionSortParallell<MyKeyValue<int, string>>(),
-                new TopNInsertionSort<MyKeyValue<int, string>>(),
+                new TopNQuickSortParallel<MyKeyValue<int, string>>(),
+                //new TopNSelectionSort<MyKeyValue<int, string>>(),
+                //new TopNSelectionSortParallell<MyKeyValue<int, string>>(),
+                //new TopNInsertionSort<MyKeyValue<int, string>>(),
                 new TopNInsertionSortParallel<MyKeyValue<int, string>>(),
         };
         private readonly string[] availableArrayPreparation = {
